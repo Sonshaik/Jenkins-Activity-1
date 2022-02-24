@@ -6,19 +6,19 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Build_S') {
             steps {
                 sh 'mvn compile'
             }
         }
-        stage('Test') {
+        stage('Test_S') {
             steps {
-                wrap([$class: 'Xvfb', debug: true, displayName: 15, displayNameOffset: 0, timeout: 10]) {
+                wrap([$class: 'Xvfb', debug: true, displayName: 12, displayNameOffset: 0, timeout: 15]) {
                     sh 'mvn test'
                 }
             }
         }
-        stage('Report') {
+        stage('Report_S') {
             steps {
                 step([$class: 'Publisher'])
             }
